@@ -1,0 +1,20 @@
+server:
+  applicationConnectors:
+  - type: http
+    port: 9044
+  adminConnectors:
+  - type: http
+    port: 9045
+  requestLog:
+    type: external
+
+htmlToPdfServiceUrl: http://ms-html-to-pdfa:6677/generatePdf
+htmlToPdfConformanceLevel: PDFA_1_A
+htmlToPdfTruststoreFile: null
+htmlToPdfTruststorePass: null
+htmlToPdfKeystoreFile: null
+htmlToPdfKeystorePass: null
+
+
+logging:
+  type: external

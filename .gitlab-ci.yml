@@ -1,0 +1,64 @@
+include:
+  - local: "/gitlab-ci/includes.yml"
+
+stages:
+  - update-version
+  - code-quality
+  - code-test
+  - application-build
+  - code-analysis
+  - site-report
+  - image-build
+  - container-image-test
+  - component-test
+  - image-push
+  - tactical-push-publish
+  - update-project-metadata
+  - generate-api-docs
+  - pages
+  - open-source
+  - create-schedules
+  - repo-gen
+
+variables:
+  # Product
+  PRODUCT: fitnote # Used by the push fragments to build artifact destinations
+  SERVICE_NAME: "pdfgen" # Used by pages-tech-docs fragment to create docs site
+  # Project badges
+  REPO_OWNER: "Team Falcon"
+  REPO_PATTERN: "V3 CI"
+  # Config
+  BUILD_TYPE:  "MAVEN"
+  MAVEN_IMAGE: "maven:3-jdk-11"
+  MVN_OPTS: "-DLOG_LEVEL=INFO"
+  MVN_CLI_OPTS: "--batch-mode"
+  # Tactical
+  DEV_BUCKET_URL: "s3://uk.gov.dwp.deploy-artefacts"
+  DOCKER_NEXUS_COMPONENT: "pdfgen"
+  HTDS_DOCKER_PULL_REPO: "nexus.service.health-dev.dwpcloud.uk:5000"
+  HTDS_DOCKER_PUSH_REPO: "nexus.service.health-dev.dwpcloud.uk:5001"
+  LOCAL_PROJECT_NAME: "fitnote"
+  LOCAL_COMPONENT_NAME: "pdfgen"
+  GITHUB_REPO_NAME: "ms-fitnote-pdf-generator" # Used for open-source fragment
+
+required-fragment-check:
+  variables:
+    RULESET: MAVEN_CI
+
+maven-cucumber:
+  extends: .docker-compose-run
+  stage: code-test
+  services:
+    - name: docker:dind
+      command: [ "--insecure-registry=nexus.service.health-dev.dwpcloud.uk:5000", "--registry-mirror=https://docker-cache.nonprod.dwpcloud.uk:5000" ]
+  variables:
+    DOCKER_COMPOSE_FILE: "docker-compose.yml"
+    DOCKER_COMPOSE_COMMAND: "--exit-code-from pdf-tests"
+
+create-develop-nightly-schedule:
+  extends: .add-schedule
+  variables:
+    SCHEDULE_NAME: Nightly-Develop-CI-Build
+    SCHEDULE_BRANCH: develop
+    SCHEDULE_CRON: "0 20 * * *"
+    RANDOMIZE_MINS: "true"

@@ -1,0 +1,21 @@
+server:
+  applicationConnectors:
+    - type: ${SERVER_APP_CONNECTOR:-http}
+      port: ${SERVER_APP_PORT:-9044}
+  adminConnectors:
+    - type: ${SERVER_ADMIN_CONNECTOR:-http}
+      port: ${SERVER_ADMIN_PORT:-0}
+  requestLog:
+    type: ${SERVER_REQUEST_LOG_TYPE:-external}
+
+htmlToPdfServiceUrl: ${htmlToPdfServiceUrl:-http://localhost:6677/generatePdf}
+htmlToPdfConformanceLevel: ${htmlToPdfConformanceLevel:-PDFA_1_A}
+htmlToPdfTruststoreFile: ${htmlToPdfTruststoreFile:-null}
+htmlToPdfTruststorePass: ${htmlToPdfTruststorePass:-null}
+htmlToPdfKeystoreFile: ${htmlToPdfKeystoreFile:-null}
+htmlToPdfKeystorePass: ${htmlToPdfKeystorePass:-null}
+
+logging:
+  type: ${LOGGING_TYPE:-external}
+
+applicationInfoEnabled: ${APPLICATION_INFO_ENABLED:-false}

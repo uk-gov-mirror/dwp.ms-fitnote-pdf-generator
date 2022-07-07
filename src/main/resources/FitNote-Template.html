@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <title>Send Your Fit Note Application</title>
+    <style type="text/css">
+      @page {
+        size: A4 landscape;
+      }
+      body {
+        margin: 0px;
+        padding: 0px;
+        font-family: 'arial', serif;
+        font-size: 14px;
+        line-height: 1;
+      }
+
+      /* Divs */
+      #applicant {
+        text-align: right;
+        float: right;
+      }
+      #fitnote {
+        clear: both;
+      }
+      #breaker {
+        clear: both;
+        margin: 0px;
+        padding: 0px;
+      }
+
+      .noWrap {
+        white-space: nowrap;
+      }
+
+      /* General HTML elements */
+      p {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      img {
+        height: 620px;
+      }
+
+      /* Labelling */
+      .label {
+        text-align: left;
+        margin-right: 10px;
+        margin-bottom: 0px;
+      }
+
+      /* Table */
+      table {
+        table-layout: auto;
+      }
+      td {
+        vertical-align: top;
+        margin: 0px;
+        padding: 0px;
+      }
+      caption {
+        display:none;
+      }
+      th {
+        font-weight: normal;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="applicant">
+      <table>
+          <caption>Applicant's details</caption>
+          <tr>
+            <th scope="col" class="noWrap"><span class="label">Address</span></th>
+            <th scope="col" class="noWrap">${houseNameOrNumber} ${street}</th>
+          </tr>
+          <tr>
+            <td></td>
+            <td>${city} ${postcode}</td>
+          </tr>
+          <tr>
+            <td class="noWrap"><span class="label">Applicants NI Number</span></td>
+            <td class="noWrap">${ninoBody}${ninoSuffix}</td>
+          </tr>
+          <tr>
+            <td class="noWrap"><span class="label">${mobileNumberText}</span></td>
+            <td class="noWrap">${mobileNumber}</td>
+          </tr>
+        </table>
+    </div>
+    <div id="fitnote">
+      <!-- renders in browser but not using openhtml2pdf (when testing locally using a Mac -->
+        <img src="${image}" alt="Fit Note" />  
+    </div>
+  </body>
+</html>
