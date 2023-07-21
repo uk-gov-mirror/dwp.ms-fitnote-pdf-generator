@@ -2,7 +2,8 @@ version: "2.1"
 services:
 
   ms-html-to-pdfa:
-    image: nexus.service.health-dev.dwpcloud.uk:5000/shared/ms-html-to-pdfa:branch-develop
+    container_name: ms-html-to-pdfa
+    image: ${HTML_TO_PDF_IMAGE}
     networks:
       - api
     expose:
@@ -12,6 +13,8 @@ services:
 
   pdf-tests:
     image: ${MAVEN_IMAGE}
+    environment:
+      - SETTINGS_FILE=${MVN_SETTINGS_FILE_SAAS}
     entrypoint: /bin/bash -c
     networks:
       - api
@@ -23,7 +26,7 @@ services:
     volumes:
       - .:/usr/src
       - ${MVN_M2}:/root/.m2
-      - ${MVN_SETTINGS_FILE}:/root/.m2/settings.xml
+      - ${MVN_SETTINGS_FILE_SAAS}:/root/.m2/settings.xml
 
 networks:
   api:

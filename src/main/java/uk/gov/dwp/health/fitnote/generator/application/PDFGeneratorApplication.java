@@ -1,12 +1,12 @@
 package uk.gov.dwp.health.fitnote.generator.application;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.dropwizard.core.Application;
+import io.dropwizard.core.setup.Bootstrap;
+import io.dropwizard.core.setup.Environment;
 import uk.gov.dwp.health.fitnote.generator.PDFGeneratorResource;
-import io.dropwizard.Application;
-import io.dropwizard.setup.Environment;
 import io.dropwizard.configuration.EnvironmentVariableSubstitutor;
 import io.dropwizard.configuration.SubstitutingSourceProvider;
-import io.dropwizard.setup.Bootstrap;
 import uk.gov.dwp.health.fitnote.generator.handlers.HtmlToPdfaHandler;
 import uk.gov.dwp.health.fitnote.generator.util.DataTransformation;
 import uk.gov.dwp.health.version.HealthCheckResource;

@@ -3,43 +3,18 @@
     <suppress>
         <notes>
             <![CDATA[
-            file name: spring-web-5.3.25.jar - need to update to java 17
-            ]]>
-        </notes>
-        <packageUrl regex="true">^pkg:maven/org\.springframework/spring\-web@.*$</packageUrl>
-        <cve>CVE-2016-1000027</cve>
-    </suppress>
-    <suppress>
-        <notes>
-            <![CDATA[
-            file name: snakeyaml-1.33.jar - is the latest version (non alpha/beta) available
-            ]]>
-        </notes>
-        <packageUrl regex="true">^pkg:maven/org\.yaml/snakeyaml@.*$</packageUrl>
-        <cve>CVE-2022-1471</cve>
+                file name: metrics-httpclient5-4.2.18.jar
+            ]]></notes>
+        <packageUrl regex="true">^pkg:maven/io\.dropwizard\.metrics/metrics\-httpclient5@.*$</packageUrl>
+        <cve>CVE-2020-13956</cve>
+        <cve>CVE-2014-3577</cve>
     </suppress>
     <suppress>
         <notes><![CDATA[
-                file name: hk2-utils-2.6.1.jar Suppressed until Dropwizard version is updated
-                ]]>
-        </notes>
-        <packageUrl regex="true">^pkg:maven/org\.glassfish\.hk2/hk2\-utils@.*$</packageUrl>
-        <cve>CVE-2021-4277</cve>
+   file name: jackson-databind-2.15.2.jar
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/com\.fasterxml\.jackson\.core/jackson\-databind@.*$</packageUrl>
+        <cve>CVE-2023-35116</cve>
     </suppress>
-    <suppress>
-        <notes><![CDATA[
-                file name: snakeyaml-1.33.jar Suppressed until maintainer addresses the vulnerability.
-                ]]>
-        </notes>
-        <packageUrl regex="true">^pkg:maven/org\.yaml/snakeyaml@.*$</packageUrl>
-        <cve>CVE-2022-3064</cve>
-    </suppress>
-    <suppress>
-        <notes><![CDATA[
-                file name: snakeyaml-1.33.jar Suppressed until maintainer addresses the vulnerability.
-                ]]>
-        </notes>
-        <packageUrl regex="true">^pkg:maven/org\.yaml/snakeyaml@.*$</packageUrl>
-        <cve>CVE-2021-4235</cve>
-    </suppress>
+
 </suppressions>

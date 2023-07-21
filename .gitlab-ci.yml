@@ -12,13 +12,11 @@ stages:
   - container-image-test
   - component-test
   - image-push
-  - tactical-push-publish
   - update-project-metadata
   - generate-api-docs
   - pages
   - open-source
   - create-schedules
-  - repo-gen
 
 variables:
   # Product
@@ -29,28 +27,27 @@ variables:
   REPO_PATTERN: "V3 CI"
   # Config
   BUILD_TYPE:  "MAVEN"
-  MAVEN_IMAGE: "maven:3-jdk-11"
+  MAVEN_IMAGE: "maven:3-amazoncorretto-17"
   MVN_OPTS: "-DLOG_LEVEL=INFO"
   MVN_CLI_OPTS: "--batch-mode"
-  # Tactical
-  DEV_BUCKET_URL: "s3://uk.gov.dwp.deploy-artefacts"
-  DOCKER_NEXUS_COMPONENT: "pdfgen"
-  HTDS_DOCKER_PULL_REPO: "nexus.service.health-dev.dwpcloud.uk:5000"
-  HTDS_DOCKER_PUSH_REPO: "nexus.service.health-dev.dwpcloud.uk:5001"
-  LOCAL_PROJECT_NAME: "fitnote"
-  LOCAL_COMPONENT_NAME: "pdfgen"
   GITHUB_REPO_NAME: "ms-fitnote-pdf-generator" # Used for open-source fragment
+
+.gitlab-login: &gitlab-login
+  before_script:
+    - echo $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY
 
 required-fragment-check:
   variables:
     RULESET: MAVEN_CI
 
+.prepare-test: &prepare-test
+  before_script:
+    - export HTML_TO_PDF_IMAGE=$(aws ssm get-parameter --name "/artifact/shared/ms-html-to-pdfa/develop" --with-decryption --output json | jq --raw-output '.Parameter.Value')
+
 maven-cucumber:
+  <<: *gitlab-login
   extends: .docker-compose-run
   stage: code-test
-  services:
-    - name: docker:dind
-      command: [ "--insecure-registry=nexus.service.health-dev.dwpcloud.uk:5000", "--registry-mirror=https://docker-cache.nonprod.dwpcloud.uk:5000" ]
   variables:
     DOCKER_COMPOSE_FILE: "docker-compose.yml"
     DOCKER_COMPOSE_COMMAND: "--exit-code-from pdf-tests"
