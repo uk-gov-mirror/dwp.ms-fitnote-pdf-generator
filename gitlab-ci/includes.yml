@@ -74,7 +74,7 @@ include:
     file: 'ci-include-push-to-ecr.yml'
   #update-project-metadata
   - project: 'dwp/engineering/pipeline-solutions/gitlab/fragments/create-project-badges'
-    ref: 2-2-1
+    ref: 2.3.0
     file: 'ci-include-create-project-badges.yml'
   #pages
   - project: 'dwp/engineering/pipeline-solutions/gitlab/fragments/pages-tech-docs'
@@ -86,5 +86,5 @@ include:
     file: 'ci-include-open-source.yml'
   #create-schedules
   - project: 'dwp/engineering/pipeline-solutions/gitlab/fragments/schedule-creation'
-    ref: 2.4.0
+    ref: 2.6.0
     file: 'ci-include-schedule-creation.yml'
