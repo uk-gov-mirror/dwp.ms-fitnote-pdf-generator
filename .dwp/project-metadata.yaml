@@ -6,11 +6,11 @@ project:
   - project_id: 27163367
     component_name: ms-fitnote-pdf-generator
 
-    version: 2.2.0
+    version: 2.4.1
 
     last_verified:
-      date: "2023-07-19"
-      name: "@dillon-vaghela"
+      date: "2024-04-29"
+      name: "@stephen-nimako"
 
     tags:
       payments: false

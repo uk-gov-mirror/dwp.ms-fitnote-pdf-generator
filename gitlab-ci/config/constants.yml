@@ -1,0 +1,13 @@
+variables:
+  # Product
+  PRODUCT: fitnote # Used by the push fragments to build artifact destinations
+  SERVICE_NAME: "pdfgen" # Used by pages-tech-docs fragment to create docs site
+  GITHUB_REPO_NAME: "ms-fitnote-pdf-generator" # Used for open-source fragment
+  # Project badges
+  REPO_OWNER: "Team Falcon"
+  REPO_PATTERN: "V3.1 CI"
+  # Config
+  BUILD_TYPE:  "MAVEN"
+  MAVEN_IMAGE: "maven:3-amazoncorretto-17"
+  MVN_OPTS: "-DLOG_LEVEL=INFO"
+  MVN_CLI_OPTS: "--batch-mode"

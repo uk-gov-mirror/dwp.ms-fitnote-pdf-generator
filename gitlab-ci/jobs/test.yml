@@ -1,0 +1,24 @@
+########################################################################################
+###    Jobs to test built code                                                       ###
+########################################################################################
+
+### ENVIRONMENT
+.environment: &environment
+  environment:
+    name: "$ENVIRONMENT"
+    action: prepare
+
+### TRIGGERS
+.component-test: &component-test
+  rules:
+    - if: $BUILD_TYPE
+
+maven-cucumber:
+  extends: .docker-compose-run-template
+  stage: code-test
+  variables:
+    DOCKER_COMPOSE_FILE: "docker-compose.yml"
+    DOCKER_COMPOSE_COMMAND: "--exit-code-from pdf-tests"
+  before_script:
+    - echo $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY
+  <<: *component-test

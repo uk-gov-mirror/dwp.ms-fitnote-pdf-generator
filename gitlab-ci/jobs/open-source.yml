@@ -1,0 +1,21 @@
+########################################################################################
+###    Jobs to open source project                                                   ###
+########################################################################################
+
+### ENVIRONMENT
+.environment: &environment
+  environment:
+    name: "$ENVIRONMENT"
+    action: prepare
+
+### TRIGGERS
+.open-source: &open-source
+  rules:
+    - if: $OPEN_SOURCE == "true"
+      when: manual
+      allow_failure: false
+
+open-source:
+  extends: .open-source-template
+  <<: *environment
+  <<: *open-source
