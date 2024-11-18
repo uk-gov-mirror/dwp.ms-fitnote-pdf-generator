@@ -30,12 +30,3 @@ shell-check:
   <<: *build-not-merge
   needs: []
 
-### SECURITY
-gitleaks:
-  extends: .gitleaks-template-saas
-  variables:
-    FRAGMENT_INCLUDE_PATH: "$CI_PROJECT_DIR/gitlab-ci/config/fragments.yml"
-    GITLEAKS_INCLUDE_FILE: "ci-include-gitleaks-base.yml"
-  <<: *environment
-  <<: *build-not-merge
-  needs: []

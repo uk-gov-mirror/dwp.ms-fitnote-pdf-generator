@@ -14,7 +14,7 @@ services:
   pdf-tests:
     image: ${MAVEN_IMAGE}
     environment:
-      - SETTINGS_FILE=${MVN_SETTINGS_FILE_SAAS}
+      - SETTINGS_FILE=${MVN_SETTINGS_FILE}
     entrypoint: /bin/bash -c
     networks:
       - api
@@ -26,7 +26,7 @@ services:
     volumes:
       - .:/usr/src
       - ${MVN_M2}:/root/.m2
-      - ${MVN_SETTINGS_FILE_SAAS}:/root/.m2/settings.xml
+      - ${MVN_SETTINGS_FILE}:/root/.m2/settings.xml
 
 networks:
   api:
