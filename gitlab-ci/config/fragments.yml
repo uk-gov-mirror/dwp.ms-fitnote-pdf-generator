@@ -52,14 +52,14 @@ include:
     file: 'ci-include-gitlab-sast-base.yml'
     #image-build
   - project: 'dwp/engineering/pipeline-solutions/gitlab/fragments/docker-build'
-    ref: 5.1.0
+    ref: 5.1.1
     file: 'ci-include-docker-build-base.yml'
     #container-image-test
   - project: 'dwp/engineering/pipeline-solutions/gitlab/fragments/sast-container-check'
     ref: 2.11.0
     file: 'ci-include-sast-container-check-base.yml'
   - project: 'dwp/engineering/pipeline-solutions/gitlab/fragments/trivy-container-check'
-    ref: 2.20.0
+    ref: 2.21.0
     file: 'ci-include-trivy-container-check-base.yml'
   - project: 'dwp/engineering/pipeline-solutions/gitlab/fragments/container-structure-test'
     ref: 2.10.0
@@ -70,7 +70,7 @@ include:
     file: 'ci-include-push-to-ecr-base.yml'
     #update-project-metadata
   - project: 'dwp/engineering/pipeline-solutions/gitlab/fragments/create-project-badges'
-    ref: 2.4.0
+    ref: 2.5.0
     file: 'ci-include-create-project-badges-base.yml'
     #pages
   - project: 'dwp/engineering/pipeline-solutions/gitlab/fragments/pages-tech-docs'

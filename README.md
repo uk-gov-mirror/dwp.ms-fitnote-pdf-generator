@@ -10,7 +10,7 @@
 
 ## Development
 
-Dev using Java 11, Dropwizard
+Dev using Java 17, Dropwizard
 
 Clone repository and run `mvn clean package`
 
@@ -20,7 +20,7 @@ Starting the service -
 
 ## Testing
 
-Tests using Java 11 using Junit 4, Cucumber for Java
+Tests using Java 17 using Junit 4, Cucumber for Java
 
 Clone repository and run `mvn clean test`
 
