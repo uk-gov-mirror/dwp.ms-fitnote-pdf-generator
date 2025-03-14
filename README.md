@@ -69,4 +69,26 @@ Health check can be found at **`/healthcheck` *[GET]***
 
 Version info can be found at **`/version-info` *[GET]***
 
+## Update dependencies
 
+Config sits in maven-version-rules.xml
+
+**To display dependency updates**
+`mvn versions:display-dependency-updates`
+
+**To display plugin updates**
+`mvn versions:display-plugin-updates`
+
+**To apply plugin & dependency updates (update all dependencies)**
+`mvn versions:update-properties -DgenerateBackupPoms=false`
+
+## Scripts
+
+Scripts to speed up general maintenance
+Strongly recommended to run before pushing
+
+**Update metadata**
+`./updateMetadata.sh`
+
+**Run mvn jobs that run in gitlab**
+`./mvnCheck.sh`

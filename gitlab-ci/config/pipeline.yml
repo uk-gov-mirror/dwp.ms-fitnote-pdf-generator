@@ -33,6 +33,9 @@ workflow:
     - if: '$CI_COMMIT_REF_NAME =~ /^[Rr]-.*$/ && $CI_PIPELINE_SOURCE != "schedule" && $PROD_AWS_ACCESS_KEY_ID == null && $PROD_AWS_SECRET_ACCESS_KEY == null && $PROD_AWS_SESSION_TOKEN == null'
       variables:
         ENVIRONMENT: 'nonprodacct'
+        # job triggers
+        VERSION: "true"
+        OPEN_SOURCE: "true"
       when: always
     ####################################################################################
     ### RELEASE BRANCHES - PROD CREDS                                                ###
