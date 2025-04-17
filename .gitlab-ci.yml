@@ -14,8 +14,6 @@ include:
   - local: "/gitlab-ci/jobs/code-quality.yml"
   # maven
   - local: "/gitlab-ci/jobs/java-maven.yml"
-  # analysis
-  - local: "/gitlab-ci/jobs/code-analysis.yml"
   # docker
   - local: "/gitlab-ci/jobs/docker.yml"
   # test

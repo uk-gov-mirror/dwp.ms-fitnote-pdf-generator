@@ -1,7 +1,7 @@
 package uk.gov.dwp.health.fitnote.generator.util;
 
-import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
+import org.apache.hc.client5.http.utils.Base64;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

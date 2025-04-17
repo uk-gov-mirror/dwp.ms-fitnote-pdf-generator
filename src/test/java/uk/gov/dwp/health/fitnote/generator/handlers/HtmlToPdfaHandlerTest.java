@@ -1,7 +1,7 @@
 package uk.gov.dwp.health.fitnote.generator.handlers;
 
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
-import org.apache.commons.codec.binary.Base64;
+import org.apache.hc.client5.http.utils.Base64;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;

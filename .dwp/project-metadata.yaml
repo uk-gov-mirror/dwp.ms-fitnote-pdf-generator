@@ -1,15 +1,15 @@
-$schema: https://gitlab.com/dwp/secure-development/schema/project-metadata/-/raw/v1.0.0/schema/project-metadata.json
+$schema: https://gitlab.com/dwp/secure-development/schema/project-metadata/-/raw/v2.0.0/schema/project-metadata.json
 
-schema_version: 1.0.0
+schema_version: 2.0.0
 
 project:
   - project_id: 27163367
     component_name: ms-fitnote-pdf-generator
 
-    version: 2.6.1
+    version: 2.6.2
 
     last_verified:
-      date: "2025-03-10"
+      date: "2025-04-09"
       name: "@aayush.srikanth"
 
     tags:

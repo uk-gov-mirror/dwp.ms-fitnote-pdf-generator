@@ -5,16 +5,17 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.impl.client.HttpClients;
+import org.apache.hc.client5.http.classic.HttpClient;
+import org.apache.hc.client5.http.classic.methods.HttpPost;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.client5.http.utils.Base64;
+import org.apache.hc.core5.http.ClassicHttpResponse;
+import org.apache.hc.core5.http.HttpEntity;
+import org.apache.hc.core5.http.io.entity.StringEntity;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -34,7 +35,7 @@ public class GeneratorSteps {
     private static String FULLY_ENCODED_JSON_STRING_WITH_PARTIAL_ADDRESS;
 
     // set-up servers, clients and responses
-    private HttpResponse generatedResponse;
+    private ClassicHttpResponse generatedResponse;
     private HttpClient httpClient;
 
     @Before
@@ -94,7 +95,7 @@ public class GeneratorSteps {
 
     @Then("^I get a http response of (\\d+)$")
     public void I_get_a_http_response_of(int statusCode) throws Throwable {
-        assertThat(generatedResponse.getStatusLine().getStatusCode(), is(statusCode));
+        assertThat(generatedResponse.getCode(), is(statusCode));
     }
 
     @And("^The PDF is written to \"([^\"]*)\"$")
@@ -131,7 +132,7 @@ public class GeneratorSteps {
         HttpEntity entity = new StringEntity(body);
         httpUriRequest.setEntity(entity);
 
-        generatedResponse = httpClient.execute(httpUriRequest);
+        generatedResponse = (ClassicHttpResponse) httpClient.execute(httpUriRequest);
     }
 
     private void writeStreamToPDF(String pdfFilePath, HttpEntity returnBody) throws IOException {

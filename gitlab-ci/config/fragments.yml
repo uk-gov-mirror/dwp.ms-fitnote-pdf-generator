@@ -47,16 +47,13 @@ include:
   - project: 'dwp/engineering/pipeline-solutions/gitlab/fragments/maven-api-spotbugs'
     ref: 3.4.0
     file: 'ci-include-maven-api-spotbugs-base.yml'
-  - project: 'dwp/engineering/pipeline-solutions/gitlab/fragments/gitlab-sast'
-    ref: 2.0.0
-    file: 'ci-include-gitlab-sast-base.yml'
     #image-build
   - project: 'dwp/engineering/pipeline-solutions/gitlab/fragments/docker-build'
     ref: 5.1.1
     file: 'ci-include-docker-build-base.yml'
     #container-image-test
   - project: 'dwp/engineering/pipeline-solutions/gitlab/fragments/sast-container-check'
-    ref: 2.11.0
+    ref: 2.11.1
     file: 'ci-include-sast-container-check-base.yml'
   - project: 'dwp/engineering/pipeline-solutions/gitlab/fragments/trivy-container-check'
     ref: 2.21.0

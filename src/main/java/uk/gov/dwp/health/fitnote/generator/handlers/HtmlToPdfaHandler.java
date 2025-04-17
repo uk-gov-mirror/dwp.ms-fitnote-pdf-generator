@@ -1,12 +1,13 @@
 package uk.gov.dwp.health.fitnote.generator.handlers;
 
-import org.apache.commons.codec.binary.Base64;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.util.EntityUtils;
+import org.apache.hc.client5.http.ClientProtocolException;
+import org.apache.hc.client5.http.classic.methods.HttpPost;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.client5.http.utils.Base64;
+import org.apache.hc.core5.http.HttpStatus;
+import org.apache.hc.core5.http.ParseException;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
+import org.apache.hc.core5.http.io.entity.StringEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import uk.gov.dwp.health.fitnote.generator.application.PDFGeneratorConfiguration;
@@ -53,26 +54,27 @@ public class HtmlToPdfaHandler {
 
     try {
       CloseableHttpResponse response = getTlsBuilder().configureSSLConnection().execute(postMethod);
-      LOG.debug("received {} from {}", response.getStatusLine().getStatusCode(),
+      LOG.debug("received {} from {}", response.getCode(),
           configuration.getHtmlToPdfServiceUrl());
 
-      if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+      if (response.getCode() == HttpStatus.SC_OK) {
         LOG.info("successfully received base64 encoded pdfa document at conformance level {}",
             configuration.getHtmlToPdfConformanceLevel());
         base64PdfResult = EntityUtils.toString(response.getEntity());
 
       } else {
-        throw new IOException(String.format(ERROR_MSG, response.getStatusLine().getStatusCode(),
+        throw new IOException(String.format(ERROR_MSG, response.getCode(),
             EntityUtils.toString(response.getEntity())));
       }
 
     } catch (TLSGeneralException
-                     | NoSuchAlgorithmException
-                     | KeyManagementException
-                     | CertificateException
-                     | KeyStoreException
-                     | UnrecoverableKeyException
-                     | ClientProtocolException e) {
+             | NoSuchAlgorithmException
+             | KeyManagementException
+             | CertificateException
+             | KeyStoreException
+             | UnrecoverableKeyException
+             | ClientProtocolException
+             | ParseException e) {
       LOG.error(e.getMessage(), e);
     }
 
