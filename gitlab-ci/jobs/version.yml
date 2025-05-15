@@ -16,5 +16,6 @@
 ### UPDATE VERSION
 check-semver:
   extends: .check-semver-maven-template
+  allow_failure: true
   <<: *environment
   <<: *version

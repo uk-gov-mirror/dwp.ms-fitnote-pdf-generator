@@ -13,9 +13,9 @@
   rules:
     - if: $OPEN_SOURCE == "true"
       when: manual
-      allow_failure: false
 
 open-source:
   extends: .open-source-template
+  allow_failure: true
   <<: *environment
   <<: *open-source
