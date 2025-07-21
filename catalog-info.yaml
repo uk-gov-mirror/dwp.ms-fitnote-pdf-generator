@@ -1,0 +1,54 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+
+metadata:
+  name: fitnote.service.ms-fitnote-pdf-generator
+  title: "fitnote/ms-fitnote-pdf-generator"
+  description: |
+    "RESTful Webservice taking JSON posted information to convert a jpg to a fully rendered and A/1A compliant PDF file"
+
+  annotations:
+    gitlab.com/project-slug: dwp/health/fitnote/components/ms-fitnote-pdf-generator
+
+  labels:
+    dwp.gov.uk/version: 2.6.4
+    dwp.gov.uk/license: MIT
+
+    dwp.gov.uk/last-verified.by: aayush.srikanth
+    dwp.gov.uk/last-verified.on: 2025-07-16
+    dwp.gov.uk/open-source.approved: "true"
+    dwp.gov.uk/open-source.location: https://github.com/dwp/ms-fitnote-pdf-generator
+    dwp.gov.uk/impacts.audit: "false"
+    dwp.gov.uk/impacts.authentication: "false"
+    dwp.gov.uk/impacts.authorisation: "false"
+    dwp.gov.uk/impacts.access-control: "false"
+    dwp.gov.uk/impacts.encryption: "false"
+    dwp.gov.uk/impacts.decryption: "false"
+    dwp.gov.uk/impacts.payments: "false"
+    dwp.gov.uk/impacts.personally-identifying-information: "true"
+
+  tags:
+    - bash
+    - bdd
+    - docker
+    - html
+    - java
+    - json
+    - typescript
+    - xml
+    - yaml
+
+  links:
+    - icon: externalLink
+      title: Repository
+      url: https://gitlab.com/dwp/health/fitnote/components/ms-fitnote-pdf-generator
+
+spec:
+  owner: group:default/backstage.group.health-and-disability
+  system: system:default/886de9ec6f20cb80a16b7e952e3ee45e
+  lifecycle: production
+  type: service
+
+  providesApis:
+    - api:default/fitnote.api.ms-fitnote-pdf-generator
