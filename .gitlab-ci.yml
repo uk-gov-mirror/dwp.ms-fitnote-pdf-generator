@@ -26,3 +26,5 @@ include:
   - local: "/gitlab-ci/jobs/version.yml"
   # open source
   - local: "/gitlab-ci/jobs/open-source.yml"
+  # slack-push
+  - local: "/gitlab-ci/jobs/messages.yml"

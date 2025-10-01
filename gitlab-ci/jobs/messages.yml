@@ -1,0 +1,55 @@
+########################################################################################
+###    Jobs specific to maven projects including:                                    ###
+###      - post fragment updated versions to slack channel                           ###
+###      - post maven updated versions to slack channel                           ###
+########################################################################################
+
+### ENVIRONMENT
+.environment: &environment
+  environment:
+    name: "$ENVIRONMENT"
+    action: prepare
+
+.merge-to-develop: &merge-to-develop
+  rules:
+    - if: $MERGE_TO_DEVELOP == "true"
+
+### post fragment updated versions to slack channel
+fragment-messages:
+  image: bash:5@sha256:cc444a5a327f8e42318b2772b392f8dd1a9dcb9e00d3c847cc9e419eefa20419
+  tags:
+    - docker
+  <<: *environment
+  <<: *merge-to-develop
+  stage: slack-push
+  when: manual
+  allow_failure: true
+  #  needs: []
+  variables:
+    FRAGMENT_INCLUDE_PATH: "$CI_PROJECT_DIR/gitlab-ci/config/fragments.yml"
+  before_script:
+    - apk --update add git bash util-linux wget curl
+    - git config --global url."https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com".insteadOf "ssh://git@gitlab.com"
+  script:
+    - wget --quiet https://github.com/mikefarah/yq/releases/download/v4.33.3/yq_linux_amd64
+    - chmod +x yq_linux_amd64
+    - PATH=$PATH:$PWD
+    - mv yq_linux_amd64 yq
+    - yq --version
+    - ./scripts/fragmentsToSlack.sh
+
+maven-messages:
+  image: ${MAVEN_IMAGE}
+  tags:
+    - docker
+  <<: *environment
+  <<: *merge-to-develop
+  stage: slack-push
+  needs: [fragment-messages]
+  allow_failure: true
+  variables:
+    POM_INCLUDE_PATH: "$CI_PROJECT_DIR/pom.xml"
+  before_script:
+    - apt-get update -y && apt-get install -y curl
+  script:
+    - ./scripts/mavenToSlack.sh

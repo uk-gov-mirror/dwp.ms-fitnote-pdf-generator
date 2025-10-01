@@ -3,90 +3,10 @@
     <suppress>
         <notes>
             <![CDATA[
-                file name: metrics-httpclient5-4.2.22.jar
+                file name: metrics-httpclient5-4.2.33.jar
             ]]></notes>
         <packageUrl regex="true">^pkg:maven/io\.dropwizard\.metrics/metrics\-httpclient5@.*$</packageUrl>
         <cve>CVE-2020-13956</cve>
         <cve>CVE-2014-3577</cve>
-    </suppress>
-    <suppress>
-        <notes><![CDATA[
-            file name: jetty-http-11.0.24.jar
-            ]]>
-        </notes>
-        <packageUrl regex="true">^pkg:maven/org\.eclipse\.jetty/jetty\-http@.*$</packageUrl>
-        <cve>CVE-2024-6763</cve>
-    </suppress>
-    <suppress>
-        <notes><![CDATA[
-            file name: jetty-io-11.0.24.jar
-            ]]>
-        </notes>
-        <packageUrl regex="true">^pkg:maven/org\.eclipse\.jetty/jetty\-io@.*$</packageUrl>
-        <cve>CVE-2024-6763</cve>
-    </suppress>
-    <suppress>
-        <notes><![CDATA[
-            file name: jetty-server-11.0.24.jar
-            ]]>
-        </notes>
-        <packageUrl regex="true">^pkg:maven/org\.eclipse\.jetty/jetty\-server@.*$</packageUrl>
-        <cve>CVE-2024-6763</cve>
-    </suppress>
-    <suppress>
-        <notes><![CDATA[
-            file name: jetty-util-11.0.24.jar
-            ]]>
-        </notes>
-        <packageUrl regex="true">^pkg:maven/org\.eclipse\.jetty/jetty\-util@.*$</packageUrl>
-        <cve>CVE-2024-6763</cve>
-    </suppress>
-    <suppress>
-        <notes><![CDATA[
-            file name: jetty-servlet-11.0.24.jar
-            ]]>
-        </notes>
-        <packageUrl regex="true">^pkg:maven/org\.eclipse\.jetty/jetty\-servlet@.*$</packageUrl>
-        <cve>CVE-2024-6763</cve>
-    </suppress>
-    <suppress>
-        <notes><![CDATA[
-            file name: jetty-security-11.0.24.jar
-            ]]>
-        </notes>
-        <packageUrl regex="true">^pkg:maven/org\.eclipse\.jetty/jetty\-security@.*$</packageUrl>
-        <cve>CVE-2024-6763</cve>
-    </suppress>
-    <suppress>
-        <notes><![CDATA[
-            file name: jetty-servlets-11.0.24.jar
-            ]]>
-        </notes>
-        <packageUrl regex="true">^pkg:maven/org\.eclipse\.jetty/jetty\-servlets@.*$</packageUrl>
-        <cve>CVE-2024-6763</cve>
-    </suppress>
-    <suppress>
-        <notes><![CDATA[
-            file name: jetty-util-11.0.24.jar
-            ]]>
-        </notes>
-        <packageUrl regex="true">^pkg:maven/org\.eclipse\.jetty/jetty\-util@.*$</packageUrl>
-        <cve>CVE-2024-6763</cve>
-    </suppress>
-    <suppress>
-        <notes><![CDATA[
-            file name: jetty-io-11.0.24.jar
-            ]]>
-        </notes>
-        <packageUrl regex="true">^pkg:maven/org\.eclipse\.jetty/jetty\-io@.*$</packageUrl>
-        <cve>CVE-2024-6763</cve>
-    </suppress>
-    <suppress>
-        <notes><![CDATA[
-            file name: logback-core-1.4.14.jar
-            ]]>
-        </notes>
-        <packageUrl regex="true">^pkg:maven/ch\.qos\.logback/logback\-core@.*$</packageUrl>
-        <cve>CVE-2024-12798</cve>
     </suppress>
 </suppressions>

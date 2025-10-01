@@ -87,8 +87,8 @@ Config sits in maven-version-rules.xml
 Scripts to speed up general maintenance
 Strongly recommended to run before pushing
 
-**Update metadata**
-`./updateMetadata.sh`
+**Update catalog-info**
+`./updateCatalogInfo.sh`
 
 **Run mvn jobs that run in gitlab**
 `./mvnCheck.sh`

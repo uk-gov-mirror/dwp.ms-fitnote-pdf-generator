@@ -1,5 +1,6 @@
 stages:
   - update-version
+  - slack-push
   - code-quality
   - code-test
   - application-build
